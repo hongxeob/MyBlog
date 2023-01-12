@@ -18,7 +18,7 @@
 
 **Framework |** Spring 5.3.21 (Spring Boot 2.7.7, Spring MVC 5.3.24, Spring Data JPA 2.7.7)
 
-**Build Tool |** Gradle 7.4.1
+**Build Tool |** Gradle 7.6
 
 **DB |** MySQL 8
 
