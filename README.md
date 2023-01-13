@@ -23,7 +23,7 @@
 **DB |** MySQL 8
 
 ---
-## 💉️Dependency
+## 💉️ Dependency
 - Spring boot
 - MySql
 - Lombok
@@ -31,3 +31,4 @@
 - Spring web
 - JPA
 - Thymeleaf 
+- P6SPY
