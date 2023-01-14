@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -39,4 +40,8 @@ public class Board {
     @JoinColumn(name = "userId") //DB상 필드값은 userId로 설정
     private User user;
 
+    @OneToMany(mappedBy = "board",
+            fetch = FetchType.EAGER, //설계한 프로젝트 UI 구조상 '댓글 펼치기' 같은 지연 로딩이 아닌, 게시판에 바로 댓글이 보이는 것이기에 EAGER 전략
+            cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
+    private List<Reply> replyList;
 }
