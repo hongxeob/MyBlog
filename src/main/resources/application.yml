@@ -21,7 +21,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
                                                             #네이밍 전량
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #->변수 이름을 그대로 사용,SpringPhysicalNamingStrategy(Default)->Camel case를 underscore 형태로 변경해서 매핑
