@@ -8,6 +8,6 @@ public class BoardController {
     // 전체 글 보기
     @GetMapping({"", "/"})
     public String index() {
-        return "home";
+        return "index";
     }
 }
