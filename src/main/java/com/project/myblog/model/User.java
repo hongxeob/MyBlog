@@ -1,10 +1,14 @@
 package com.project.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -21,14 +25,19 @@ public class User {
     @Column(nullable = false, length = 100, unique = true)
     private String username;
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String password;
 
     @Column(nullable = false, length = 50)
     private String email;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private LocalDateTime createDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime createDateTime;
+
+    @PrePersist //DB에 insert되기 직전 실행! DB에 값을 넣으면 자동으로 실행
+    public void createdAt() {
+        this.createDateTime = LocalDateTime.now();
+    }
 
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
