@@ -9,7 +9,7 @@
 <div th:replace="/layout/nav.html :: fragment-nav"></div>
 
 <div class="container">
-    <form action="/action_page.php">
+    <form>
         <div class="form-group">
             <label for="username">아이디</label>
             <input type="text" class="form-control" placeholder="ID" id="username">
@@ -23,11 +23,12 @@
                 <input class="form-check-input" type="checkbox"> 로그인 정보 기억하기
             </label>
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
 
+    </form>
+    <button id="btn-login" type="submit" class="btn btn-primary">로그인</button>
 </div>
 
+<script src="/js/user.js"></script>
 <footer th:replace="/layout/footer.html :: fragment-footer"></footer>
 </body>
 </html>
