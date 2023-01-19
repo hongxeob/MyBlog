@@ -1,7 +1,6 @@
 package com.project.myblog.model;
 
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -20,7 +19,7 @@ public class Board {
     private long id;
 
 
-    @Column(nullable = false,length = 100)
+    @Column(nullable = false, length = 100)
     private String title;
 
 
@@ -28,11 +27,15 @@ public class Board {
     private String content; //섬머노트 라이브러리 사용 -<html> 태크 섞여 디자인
 
     //조회수
-    //    @ColumnDefault("0")
     private int hits;
 
-    @DateTimeFormat(pattern = "yyyy-mm-dd HH:mm")
-    private LocalDateTime createDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private LocalDateTime localDateTime;
+
+    @PrePersist
+    public void createdAt() {
+        this.localDateTime = LocalDateTime.now();
+    }
 
     //글쓴이
     //DB는 오브젝트 저장X-> FK사용, 자바는 오브젝트 저장 가능

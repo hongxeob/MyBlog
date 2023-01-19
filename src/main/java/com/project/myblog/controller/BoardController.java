@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BoardController {
     // 전체 글 보기
     @GetMapping({"", "/"})
-    public String index(@AuthenticationPrincipal PrincipalDetail principalDetail) {
+    public String index() {
         return "index";
+    }
+
+    @GetMapping("/board/writeForm")
+    public String writeForm() {
+        return "board/writeForm";
     }
 }
