@@ -4,6 +4,10 @@ import com.project.myblog.config.auth.PrincipalDetail;
 import com.project.myblog.model.Board;
 import com.project.myblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +22,9 @@ public class BoardController {
 
     // 전체 글 보기
     @GetMapping({"", "/"})
-    public String index(Model model) {
-        List<Board> board = boardService.list();
+    public String index(Model model, @PageableDefault(size = 3, sort = "id",
+            direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Board> board = boardService.list(pageable);
         model.addAttribute("boards", board);
         return "index";
     }
