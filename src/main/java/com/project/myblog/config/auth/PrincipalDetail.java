@@ -14,6 +14,7 @@ public class PrincipalDetail implements UserDetails { //UserDetails = Spring Sec
 
     private final User user;
 
+
     @Override
     public String getPassword() {
         return user.getPassword();

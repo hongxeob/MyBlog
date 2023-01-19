@@ -22,7 +22,7 @@
             </ul>
         </div>
         <!-- 비로그인 상태 -->
-        <div sec:authorize="!isAuthenticated()">
+        <div sec:authorize="isAnonymous()">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/auth/loginForm">로그인 🔐</a>
