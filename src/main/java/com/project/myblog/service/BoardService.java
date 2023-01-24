@@ -39,4 +39,15 @@ public class BoardService {
     public void delete(Long id) {
         boardRepository.deleteById(id);
     }
+
+    @Transactional
+    public void update(Long id, Board requestBoard) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> {
+            return new IllegalArgumentException("글을 찾을 수 없습니다");
+        }); // -> 영속화 완료
+        board.setTitle(requestBoard.getTitle());
+        board.setContent(requestBoard.getContent());
+        // 바로 값만 새로 세팅해주면 된다
+        // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
+    }
 }
