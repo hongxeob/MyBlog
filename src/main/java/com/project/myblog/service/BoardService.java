@@ -23,13 +23,20 @@ public class BoardService {
         boardRepository.save(board);
     }
 
+    @Transactional(readOnly = true) // 읽기 전용 -> 상태변화X->영속성 컨텍스트 관리X
     public Page<Board> list(Pageable pageable) {
         return boardRepository.findAll(pageable);
     }
 
+    @Transactional(readOnly = true) // 읽기 전용 -> 상태변화X->영속성 컨텍스트 관리X
     public Board details(Long id) {
         return boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("아이디를 찾을 수 없습니다");
         });
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        boardRepository.deleteById(id);
     }
 }

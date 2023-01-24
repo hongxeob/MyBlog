@@ -3,6 +3,9 @@ let index = {
         $("#btn-write").on("click", () => {
             this.save();
         });
+        $("#btn-delete").on("click", () => {
+            this.deleteByArticle();
+        });
 
     },
 
@@ -25,6 +28,23 @@ let index = {
             alert(JSON.stringify(error));
         });
     },
+    deleteByArticle: function () {
+        let id = $("#id").text();
+        // console.log(id);
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/board/" + id,
+            dataType: "json"//서버에서 어떤 타입을 받을 것인지를 의미 (요청이 서버로 응답이 왔을 때,javascript 오브젝트로 변경)
+        }).done(function (res) {
+            alert("글이 삭제되었습니다!!🎉")
+            location.href = "/";
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+    },
+
+
 }
 
 index.init();

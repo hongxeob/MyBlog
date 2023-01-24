@@ -31,8 +31,11 @@
     <div class="form-group">
         <h3 th:text="${board.title}"></h3>
     </div>
-    <button id="btn-write" class="btn btn-primary">글쓰기 완료</button>
-
+    <!--   th:utext 를 사용해야 html파일 안에 html태그까지 모두 적용함    -->
+    <div class="form-group">
+        <div th:utext="${board.content}"></div>
+    </div>
+    <hr>
 </div>
 
 <script src="/js/board.js"></script>
