@@ -3,16 +3,12 @@ package com.project.myblog.service;
 import com.project.myblog.model.Board;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.BoardRepository;
-import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +25,11 @@ public class BoardService {
 
     public Page<Board> list(Pageable pageable) {
         return boardRepository.findAll(pageable);
+    }
+
+    public Board details(Long id) {
+        return boardRepository.findById(id).orElseThrow(() -> {
+            return new IllegalArgumentException("아이디를 찾을 수 없습니다");
+        });
     }
 }
