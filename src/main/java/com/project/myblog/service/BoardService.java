@@ -18,7 +18,7 @@ public class BoardService {
 
     @Transactional
     public void write(Board board, User user) {
-        board.setHits(0);
+        board.setViews(0);
         board.setUser(user);
         boardRepository.save(board);
     }
@@ -33,6 +33,11 @@ public class BoardService {
         return boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("아이디를 찾을 수 없습니다");
         });
+    }
+
+    @Transactional
+    public int updateViews(Long id) {
+        return boardRepository.updateViews(id);
     }
 
     @Transactional

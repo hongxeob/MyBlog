@@ -28,7 +28,7 @@
         글 번호 : <span th:id="id"><i th:text="${board.id}"></i> </span> <br>
         작성자 : <span><b><i th:text="${board.getUser().getUsername()}"></i> </b></span><br>
         작성날짜 : <span th:text="${board.getUser().getCreateDateTime()}"> </span><br>
-        조회수 : <span th:text="${board.hits}"></span><br>
+        조회수 : <span th:text="${board.views}"></span><br>
     </div>
     <br/>
     <div class="form-group">
