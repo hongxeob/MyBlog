@@ -27,7 +27,7 @@ public class Board {
     private String content; //섬머노트 라이브러리 사용 -<html> 태크 섞여 디자인
 
     //조회수
-    private int hits;
+    private int views;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private LocalDateTime localDateTime;
