@@ -1,5 +1,6 @@
 package com.project.myblog.service;
 
+import com.project.myblog.config.auth.PrincipalDetail;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder encoder;
 
+
     @Transactional
     public void join(User user) {
         String originPassword = user.getPassword();
@@ -23,4 +25,14 @@ public class UserService {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void update(User user) {
+        User findUser = userRepository.findById(user.getId()).orElseThrow(() -> {
+            return new IllegalArgumentException("회원을 찾을 수 없습니다");
+        });
+        String rawPassword = user.getPassword();
+        String encPassword = encoder.encode(rawPassword);
+        findUser.setPassword(encPassword);
+        findUser.setEmail(user.getEmail());
+    }
 }
