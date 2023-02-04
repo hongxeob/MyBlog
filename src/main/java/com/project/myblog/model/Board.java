@@ -1,16 +1,20 @@
 package com.project.myblog.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+//@Data
 @NoArgsConstructor
+@Getter
 @AllArgsConstructor
-@Builder
+//@Builder
 @Entity // User 클래스가 MySQL에 자동으로 테이블 생성
 public class Board {
 
@@ -47,4 +51,11 @@ public class Board {
             fetch = FetchType.EAGER, //설계한 프로젝트 UI 구조상 '댓글 펼치기' 같은 지연 로딩이 아닌, 게시판에 바로 댓글이 보이는 것이기에 EAGER 전략
             cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
     private List<Reply> replyList;
+
+    @Builder
+    public Board(String title, String content, int views, User user) {
+        this.title = title;
+        this.views = views;
+        this.user = user;
+    }
 }

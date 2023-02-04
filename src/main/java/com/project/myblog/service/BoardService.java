@@ -18,8 +18,18 @@ public class BoardService {
 
     @Transactional
     public void write(Board board, User user) {
-        board.setViews(0);
-        board.setUser(user);
+//        board.setViews(0);
+//        Board newBoard = Board
+//                .builder()
+//                .views(0)
+//                .user(user)
+//                .build();
+        board = Board.builder()
+                .title(board.getTitle())
+                .views(0)
+                .user(user)
+                .build();
+//        board.setUser(user);
         boardRepository.save(board);
     }
 
@@ -50,8 +60,12 @@ public class BoardService {
         Board board = boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("글을 찾을 수 없습니다");
         }); // -> 영속화 완료
-        board.setTitle(requestBoard.getTitle());
-        board.setContent(requestBoard.getContent());
+//        board.setTitle(requestBoard.getTitle());
+        Board board1 = Board
+                .builder()
+                .title(requestBoard.getTitle())
+                .content(requestBoard.getContent())
+                .build();
         // 바로 값만 새로 세팅해주면 된다
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
     }
