@@ -28,8 +28,8 @@ public class BoardApiController {
     }
 
     @PutMapping("/api/board/{id}")
-    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody BoardDto boardDto) {
-        boardService.update(id, boardDto);
+    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody BoardDto requestBoardDto) {
+        boardService.update(id, requestBoardDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

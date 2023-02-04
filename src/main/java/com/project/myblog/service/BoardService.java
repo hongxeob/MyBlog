@@ -50,11 +50,11 @@ public class BoardService {
     }
 
     @Transactional
-    public void update(Long id, BoardDto requestBoard) {
+    public void update(Long id, BoardDto requestBoardDto) {
         Board board = boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("글을 찾을 수 없습니다");
         }); // -> 영속화 완료
-        board.updateBoard(requestBoard.getTitle(), requestBoard.getContent());
+        board.updateBoard(requestBoardDto.getTitle(), requestBoardDto.getContent());
         // 바로 값만 새로 세팅해주면 된다
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
     }
