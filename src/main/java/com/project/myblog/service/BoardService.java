@@ -1,14 +1,18 @@
 package com.project.myblog.service;
 
+import com.project.myblog.dto.BoardDto;
 import com.project.myblog.model.Board;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.BoardRepository;
+import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -17,20 +21,10 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     @Transactional
-    public void write(Board board, User user) {
-//        board.setViews(0);
-//        Board newBoard = Board
-//                .builder()
-//                .views(0)
-//                .user(user)
-//                .build();
-        board = Board.builder()
-                .title(board.getTitle())
-                .views(0)
-                .user(user)
-                .build();
-//        board.setUser(user);
-        boardRepository.save(board);
+    public void write(BoardDto boardDto, User user) {
+        boardDto.setUser(user);
+        Board saveBoard = boardDto.toEntity();
+        boardRepository.save(saveBoard);
     }
 
     @Transactional(readOnly = true) // 읽기 전용 -> 상태변화X->영속성 컨텍스트 관리X
@@ -56,16 +50,11 @@ public class BoardService {
     }
 
     @Transactional
-    public void update(Long id, Board requestBoard) {
+    public void update(Long id, BoardDto requestBoard) {
         Board board = boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("글을 찾을 수 없습니다");
         }); // -> 영속화 완료
-//        board.setTitle(requestBoard.getTitle());
-        Board board1 = Board
-                .builder()
-                .title(requestBoard.getTitle())
-                .content(requestBoard.getContent())
-                .build();
+        board.updateBoard(requestBoard.getTitle(), requestBoard.getContent());
         // 바로 값만 새로 세팅해주면 된다
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
     }

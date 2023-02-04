@@ -1,9 +1,6 @@
 package com.project.myblog.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -11,25 +8,22 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 //@Data
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @AllArgsConstructor
-//@Builder
+@Builder
 @Entity // User 클래스가 MySQL에 자동으로 테이블 생성
 public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private Long id;
 
     @Column(nullable = false, length = 100)
     private String title;
 
-
     @Lob //대용량 데이터
     private String content; //섬머노트 라이브러리 사용 -<html> 태크 섞여 디자인
-
     //조회수
     private int views;
 
@@ -52,10 +46,8 @@ public class Board {
             cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
     private List<Reply> replyList;
 
-    @Builder
-    public Board(String title, String content, int views, User user) {
+    public void updateBoard(String title, String content) {
         this.title = title;
-        this.views = views;
-        this.user = user;
+        this.content = content;
     }
 }

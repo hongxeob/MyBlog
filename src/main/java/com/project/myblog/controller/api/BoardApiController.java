@@ -1,6 +1,7 @@
 package com.project.myblog.controller.api;
 
 import com.project.myblog.config.auth.PrincipalDetail;
+import com.project.myblog.dto.BoardDto;
 import com.project.myblog.dto.ResponseDto;
 import com.project.myblog.model.Board;
 import com.project.myblog.service.BoardService;
@@ -15,8 +16,8 @@ public class BoardApiController {
     private final BoardService boardService;
 
     @PostMapping("/api/board")
-    public ResponseDto<Integer> write(@RequestBody Board board, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        boardService.write(board, principalDetail.getUser());
+    public ResponseDto<Integer> write(@RequestBody BoardDto boardDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
+        boardService.write(boardDto, principalDetail.getUser());
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 
@@ -27,8 +28,8 @@ public class BoardApiController {
     }
 
     @PutMapping("/api/board/{id}")
-    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody Board board) {
-        boardService.update(id, board);
+    public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody BoardDto boardDto) {
+        boardService.update(id, boardDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }
