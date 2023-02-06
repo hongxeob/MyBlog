@@ -27,8 +27,7 @@
     <!--처음,끝이 아닐 때-->
     <div th:if="!${boards.last} and !${boards.first}">
         <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link"
-                                     th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
+            <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
             <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a></li>
         </ul>
     </div>
@@ -38,19 +37,16 @@
         <!--첫 페이지 일때-->
         <div th:if="${boards.first}">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link"
-                                                  th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
+                <li class="page-item disabled"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
                 <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
                 </li>
             </ul>
         </div>
         <!--끝 페이지 일 때-->
-        <div th:unless="${boards.last}">
+        <div th:unless="${boards.first}">
             <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link"
-                                         th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
-                <li class="page-item disabled"><a class="page-link"
-                                                  th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
+                <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
+                <li class="page-item disabled"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
                 </li>
             </ul>
         </div>
