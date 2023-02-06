@@ -7,9 +7,9 @@ let index = {
             this.deleteByArticle();
         });
         $("#btn-update").on("click", () => {
+            ``
             this.update();
         });
-
     },
 
     save: function () {
@@ -47,13 +47,15 @@ let index = {
             alert(JSON.stringify(error));
         });
     },
+
     update: function () {
         let id = $("#id").val();
         let data = {
             title: $("#title").val(),
             content: $("#content").val(),
         }
-
+        console.log(id);
+        console.log(data);
         $.ajax({
             type: "PUT",
             url: "/api/board/" + id,
@@ -67,7 +69,6 @@ let index = {
             alert(JSON.stringify(error));
         });
     },
-
 }
 
 index.init();
