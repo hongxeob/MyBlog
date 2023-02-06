@@ -1,6 +1,7 @@
 package com.project.myblog.service;
 
-import com.project.myblog.config.auth.PrincipalDetail;
+import com.project.myblog.dto.UserDto;
+import com.project.myblog.dto.UserDto;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,11 @@ public class UserService {
 
 
     @Transactional
-    public void join(User user) {
-        String originPassword = user.getPassword();
+    public void join(UserDto userDto) {
+        String originPassword = userDto.getPassword();
         String encodePassword = encoder.encode(originPassword);
-        user.setPassword(encodePassword);
+        userDto.setPassword(encodePassword);
+        User user = userDto.toEntity();
         userRepository.save(user);
     }
 
@@ -32,7 +34,6 @@ public class UserService {
         });
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
-        findUser.setPassword(encPassword);
-        findUser.setEmail(user.getEmail());
+        findUser.updateUser(encPassword, user.getEmail());
     }
 }

@@ -1,6 +1,8 @@
 package com.project.myblog.controller.api;
 
+import com.project.myblog.dto.BoardDto;
 import com.project.myblog.dto.ResponseDto;
+import com.project.myblog.dto.UserDto;
 import com.project.myblog.model.RoleType;
 import com.project.myblog.model.User;
 import com.project.myblog.service.UserService;
@@ -10,10 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,11 +22,12 @@ public class UserApiController {
     private final AuthenticationManager authenticationManager;
 
     @PostMapping("/auth/joinProc")
-    public ResponseDto<Integer> save(@RequestBody User user) {
-        user.setRole(RoleType.USER);
-        userService.join(user);
+    public ResponseDto<Integer> save(@RequestBody UserDto userDto) {
+        userDto.setRole(RoleType.USER);
+        userService.join(userDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); // 자바 오브젝트를 JSON으로 변환하여 전송 (JACKSON)
     }
+
 
     @PutMapping("/user")
     public ResponseDto<Integer> update(@RequestBody User user) {
