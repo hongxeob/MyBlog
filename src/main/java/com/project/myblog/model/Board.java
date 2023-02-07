@@ -1,6 +1,7 @@
 package com.project.myblog.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,13 +28,13 @@ public class Board {
     //조회수
     private int views;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @CreationTimestamp
     private LocalDateTime localDateTime;
 
-    @PrePersist
-    public void createdAt() {
-        this.localDateTime = LocalDateTime.now();
-    }
+//    @PrePersist
+//    public void createdAt() {
+//        this.localDateTime = LocalDateTime.now();
+//    }
 
     //글쓴이
     //DB는 오브젝트 저장X-> FK사용, 자바는 오브젝트 저장 가능

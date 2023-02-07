@@ -1,6 +1,7 @@
 package com.project.myblog.model;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class User {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @CreationTimestamp
     private LocalDateTime createDateTime;
 
     @PrePersist //DB에 insert되기 직전 실행! DB에 값을 넣으면 자동으로 실행
