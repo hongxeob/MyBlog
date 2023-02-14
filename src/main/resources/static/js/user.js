@@ -7,7 +7,6 @@ let index = {
             this.update();
         });
     },
-
     save: function () {
         let data = {
             username: $("#username").val(),
@@ -25,7 +24,7 @@ let index = {
             alert("회원가입 완료!🎉")
             location.href = "/";
         }).fail(function (error) {
-            alert(JSON.stringify(error));
+            alert("양식에 맞게 정보를 기입해 주세요!!");
         });
     },
 

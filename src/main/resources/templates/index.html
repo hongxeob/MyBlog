@@ -3,6 +3,12 @@
 
 <head>
     <div th:replace="/layout/header.html :: fragment-header"></div>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <!--<sec:authorize access="isAuthenticated()">-->
@@ -19,38 +25,53 @@
                 <h4 class="card-title" th:text="${board.getTitle()}">제목</h4>
                 <a th:href="@{/board/{id}(id=${board.getId()})}" class="btn btn-primary">상세보기</a>
                 <h6 align="right" style="margin-bottom:-10px" th:text="'조회수 : ' + ${board.getViews()}">조회수</h6>
-
             </div>
         </div>
     </div>
 
-    <!--처음,끝이 아닐 때-->
-    <div th:if="!${boards.last} and !${boards.first}">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
-            <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a></li>
-        </ul>
+    <!-- 게시물이 하나라도 있을 때-->
+    <div th:if="!${boards.isEmpty()}">
+
+        <!--처음,끝이 아닐 때-->
+        <div th:if="!${boards.last} and !${boards.first}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a>
+                </li>
+                <li class="page-item"><a class="page-link"
+                                         th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
+                </li>
+            </ul>
+        </div>
+
+        <!--처음,끝일 때-->
+        <div th:unless="!${boards.last} and !${boards.first} and ${boards > 1}">
+            <!--첫 페이지 일때-->
+            <div th:if="${boards.first}">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><a class="page-link"
+                                                      th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a>
+                    </li>
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
+                    </li>
+                </ul>
+            </div>
+            <!--끝 페이지 일 때-->
+            <div th:unless="${boards.first}">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link"
+                                             th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a>
+                    </li>
+                    <li class="page-item disabled"><a class="page-link"
+                                                      th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <!--처음,끝일 때-->
-    <div th:unless="!${boards.last} and !${boards.first}">
-        <!--첫 페이지 일때-->
-        <div th:if="${boards.first}">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
-                <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
-                </li>
-            </ul>
-        </div>
-        <!--끝 페이지 일 때-->
-        <div th:unless="${boards.first}">
-            <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>
-                <li class="page-item disabled"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>
-                </li>
-            </ul>
-        </div>
-
+    <div th:unless="!${boards.isEmpty()}">
+        <h2>게시물을 작성해 보세요!</h2>
     </div>
 </div>
 
