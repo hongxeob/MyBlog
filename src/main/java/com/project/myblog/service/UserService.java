@@ -1,7 +1,7 @@
 package com.project.myblog.service;
 
-import com.project.myblog.dto.UserDto;
-import com.project.myblog.dto.UserDto;
+import com.project.myblog.dto.request.UserSaveRequestDto;
+import com.project.myblog.dto.response.UserResponseDto;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,21 +19,21 @@ public class UserService {
 
 
     @Transactional
-    public void join(UserDto userDto) {
-        String originPassword = userDto.getPassword();
+    public void join(UserSaveRequestDto userSaveRequestDto) {
+        String originPassword = userSaveRequestDto.getPassword();
         String encodePassword = encoder.encode(originPassword);
-        userDto.setPassword(encodePassword);
-        User user = userDto.toEntity();
+        userSaveRequestDto.setPassword(encodePassword);
+        User user = userSaveRequestDto.toEntity();
         userRepository.save(user);
     }
 
     @Transactional
     public void update(User user) {
-        User findUser = userRepository.findById(user.getId()).orElseThrow(() -> {
-            return new IllegalArgumentException("회원을 찾을 수 없습니다");
-        });
+        User findUser = userRepository.findById(user.getId()).orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다"));
+
         String rawPassword = user.getPassword();
         String encPassword = encoder.encode(rawPassword);
+
         findUser.updateUser(encPassword, user.getEmail());
     }
 }

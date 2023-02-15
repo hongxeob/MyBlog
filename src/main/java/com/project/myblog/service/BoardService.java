@@ -4,15 +4,12 @@ import com.project.myblog.dto.BoardDto;
 import com.project.myblog.model.Board;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.BoardRepository;
-import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor

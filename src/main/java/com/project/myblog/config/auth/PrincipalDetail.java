@@ -1,7 +1,6 @@
 package com.project.myblog.config.auth;
 
 import com.project.myblog.model.User;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

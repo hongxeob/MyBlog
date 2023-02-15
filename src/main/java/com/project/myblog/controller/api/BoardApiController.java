@@ -3,7 +3,6 @@ package com.project.myblog.controller.api;
 import com.project.myblog.config.auth.PrincipalDetail;
 import com.project.myblog.dto.BoardDto;
 import com.project.myblog.dto.ResponseDto;
-import com.project.myblog.model.Board;
 import com.project.myblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

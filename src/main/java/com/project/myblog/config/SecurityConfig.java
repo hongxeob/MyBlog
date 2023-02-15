@@ -50,7 +50,6 @@ public class SecurityConfig {
                 .loginPage("/auth/loginForm") // 로그인 페이지 url 설정
                 .loginProcessingUrl("/auth/loginProc") // 로그인 Form Action Url을 지정할 수 있다. 사용자 이름과 암호를 제출할 URL (기본값은 /login 이다.)
                 .defaultSuccessUrl("/"); //로그인에 성공했을 때에 아무런 설정을 하지 않았을 시 넘어가는 페이지를 설정
-
         return http.build();
     }
 }

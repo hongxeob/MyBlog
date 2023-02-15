@@ -1,11 +1,15 @@
 package com.project.myblog.model;
 
+import com.project.myblog.dto.response.UserResponseDto;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 
 //@Data
 @Getter
@@ -31,16 +35,20 @@ public class User {
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
-    @PrePersist //DB에 insert되기 직전 실행! DB에 값을 넣으면 자동으로 실행
-    public void createdAt() {
-        this.createDateTime = LocalDateTime.now();
-    }
-
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
 
     public void updateUser(String password, String email) {
         this.password = password;
         this.email = email;
+    }
+
+    public UserResponseDto toDto() {
+        return UserResponseDto.builder()
+                .id(id)
+                .username(username)
+                .password(password)
+                .email(email)
+                .build();
     }
 }
