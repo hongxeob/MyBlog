@@ -1,21 +1,17 @@
 package com.project.myblog.model;
 
 import com.project.myblog.dto.response.UserResponseDto;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
 
 //@Data
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
-@Builder
+@NoArgsConstructor
 @Entity // User 클래스가 MySQL에 자동으로 테이블 생성
 public class User {
 
@@ -38,9 +34,15 @@ public class User {
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
 
-    public void updateUser(String password, String email) {
-        this.password = password;
+    private String oauth;
+
+
+    public void updateEmail( String email) {
         this.email = email;
+    }
+
+    public void updatePassword(String password) {
+        this.password = password;
     }
 
     public UserResponseDto toDto() {
@@ -50,5 +52,16 @@ public class User {
                 .password(password)
                 .email(email)
                 .build();
+    }
+
+    @Builder
+    public User(long id, String username, String password, String email, LocalDateTime createDateTime, RoleType role, String oauth) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.createDateTime = createDateTime;
+        this.role = role;
+        this.oauth = oauth;
     }
 }

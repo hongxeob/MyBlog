@@ -1,7 +1,6 @@
 package com.project.myblog.service;
 
 import com.project.myblog.dto.request.UserSaveRequestDto;
-import com.project.myblog.dto.response.UserResponseDto;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -28,12 +27,28 @@ public class UserService {
     }
 
     @Transactional
+    public void oAuthJoin(User user) {
+        String originPassword = user.getPassword();
+        String encodePassword = encoder.encode(originPassword);
+        user.updatePassword(encodePassword);
+        userRepository.save(user);
+    }
+
+    @Transactional
     public void update(User user) {
         User findUser = userRepository.findById(user.getId()).orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다"));
 
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
+        if (findUser.getOauth() == null || findUser.getOauth().equals("")) {
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            findUser.updatePassword(encPassword);
+        }
+        findUser.updateEmail(user.getEmail());
+    }
 
-        findUser.updateUser(encPassword, user.getEmail());
+    @Transactional(readOnly = true)
+    public User findUser(String username) {
+        User user = userRepository.findByUsername(username).orElseGet(() -> new User());
+        return user;
     }
 }
