@@ -26,19 +26,12 @@ public class UserService {
         userRepository.save(user);
     }
 
-    @Transactional
-    public void oAuthJoin(User user) {
-        String originPassword = user.getPassword();
-        String encodePassword = encoder.encode(originPassword);
-        user.updatePassword(encodePassword);
-        userRepository.save(user);
-    }
 
     @Transactional
     public void update(User user) {
         User findUser = userRepository.findById(user.getId()).orElseThrow(() -> new IllegalArgumentException("회원을 찾을 수 없습니다"));
 
-        if (findUser.getOauth() == null || findUser.getOauth().equals("")) {
+        if (findUser.getProvider() == null || findUser.getProvider().equals("")) {
             String rawPassword = user.getPassword();
             String encPassword = encoder.encode(rawPassword);
             findUser.updatePassword(encPassword);
@@ -48,7 +41,10 @@ public class UserService {
 
     @Transactional(readOnly = true)
     public User findUser(String username) {
-        User user = userRepository.findByUsername(username).orElseGet(() -> new User());
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            new User();
+        }
         return user;
     }
 }

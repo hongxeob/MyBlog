@@ -34,10 +34,11 @@ public class User {
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
 
-    private String oauth;
+    private String provider;
+    private String providerId;
 
 
-    public void updateEmail( String email) {
+    public void updateEmail(String email) {
         this.email = email;
     }
 
@@ -54,14 +55,16 @@ public class User {
                 .build();
     }
 
+//    }
     @Builder
-    public User(long id, String username, String password, String email, LocalDateTime createDateTime, RoleType role, String oauth) {
+    public User(long id, String username, String password, String email, LocalDateTime createDateTime, RoleType role,  String provider, String providerId) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.createDateTime = createDateTime;
         this.role = role;
-        this.oauth = oauth;
+        this.provider = provider;
+        this.providerId = providerId;
     }
 }

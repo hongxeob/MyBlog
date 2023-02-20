@@ -15,12 +15,16 @@ import org.springframework.stereotype.Service;
 // username 이 DB에 있는지만 확인해주면 됨
 // 밑에 Override 된 함수에서 username 확인을함
 public class PrincipalDetailService implements UserDetailsService {
+
     private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("해당 유저 찾을 수 없습니다😂"));
-        return new PrincipalDetail(user); //시큐리티 세션에 유저 정보가 저장됨
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("해당 유저 찾을 수 없습니다😂");
+        }
+        return new PrincipalDetails(user); //시큐리티 세션에 유저 정보가 저장됨
     }
 
 }

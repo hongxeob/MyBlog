@@ -11,7 +11,7 @@
     <form>
         <input type="hidden" id="id" th:value="${principal.getId()}">
 
-        <div th:if="${principal.oauth != null}">
+        <div th:if="${principal.provider!=null}">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" th:value="${principal.getUsername()}" class="form-control" placeholder="ID"
@@ -23,7 +23,7 @@
                        id="email" readonly>
             </div>
         </div>
-        <div th:unless="${principal.oauth != null}">
+        <div th:unless="${principal.provider != null}">
             <div class="form-group">
                 <label for="username">아이디</label>
                 <input type="text" th:value="${principal.getUsername()}" class="form-control" placeholder="ID"
