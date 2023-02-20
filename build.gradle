@@ -39,8 +39,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //추가 라이브러리
-    implementation 'javax.servlet:jstl'   // JSTL
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // JSP 템플릿 엔진
+//    implementation 'javax.servlet:jstl'   // JSTL
+//    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper' // JSP 템플릿 엔진
     implementation 'org.springframework.security:spring-security-taglibs'// Security 태그 라이브러리
 
 }
