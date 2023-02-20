@@ -1,10 +1,8 @@
 package com.project.myblog.controller;
 
 import com.project.myblog.config.auth.PrincipalDetails;
-import com.project.myblog.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 @Controller
 public class UserController {
-    private final UserService userService;
-    private final AuthenticationManager authenticationManager;
 
     @Value("${root.key}")
     private String rootKey;
@@ -40,7 +36,6 @@ public class UserController {
     @GetMapping("/user/updateForm")
     public String updateForm(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
         model.addAttribute("principal", principalDetails.getUser());
-//        userService.update(principalDetails.getUser());
         return "user/updateForm";
     }
 }
