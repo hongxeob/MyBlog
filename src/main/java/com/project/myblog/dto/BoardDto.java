@@ -13,6 +13,7 @@ public class BoardDto {
     @NonNull
     private String title;
     private String content;
+    private String category;
     private int views;
     private User user;
 
@@ -21,14 +22,10 @@ public class BoardDto {
                 .id(id)
                 .title(title)
                 .content(content)
+                .category(category)
                 .views(views)
                 .user(user)
                 .build();
-    }
-
-    public void updateBoard(String title, String content) {
-        this.title = title;
-        this.content = content;
     }
 }
 

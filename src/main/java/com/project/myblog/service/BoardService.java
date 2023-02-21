@@ -29,6 +29,11 @@ public class BoardService {
         return boardRepository.findAll(pageable);
     }
 
+    @Transactional(readOnly = true)
+    public Page<Board> categoryList(Pageable pageable, String category) {
+        return boardRepository.findByCategory(pageable, category);
+    }
+
     @Transactional(readOnly = true) // 읽기 전용 -> 상태변화X->영속성 컨텍스트 관리X
     public Board details(Long id) {
         return boardRepository.findById(id).orElseThrow(() -> {
@@ -51,7 +56,7 @@ public class BoardService {
         Board board = boardRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("글을 찾을 수 없습니다");
         }); // -> 영속화 완료
-        board.updateBoard(requestBoardDto.getTitle(), requestBoardDto.getContent());
+        board.updateBoard(requestBoardDto.getTitle(), requestBoardDto.getContent(),requestBoardDto.getCategory());
         // 바로 값만 새로 세팅해주면 된다
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
     }

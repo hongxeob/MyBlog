@@ -26,6 +26,22 @@ public class BoardController {
         return "index";
     }
 
+    @GetMapping("/board/daily")
+    public String dailyList(Model model, @PageableDefault(size = 5, sort = "id",
+            direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Board> daily = boardService.categoryList(pageable, "daily");
+        model.addAttribute("boards", daily);
+        return "category/daily";
+    }
+
+    @GetMapping("/board/knowledge")
+    public String knowledgeList(Model model, @PageableDefault(size = 5, sort = "id",
+            direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Board> knowledge = boardService.categoryList(pageable, "knowledge");
+        model.addAttribute("boards", knowledge);
+        return "category/knowledge";
+    }
+
     @GetMapping("/board/writeForm")
     public String writeForm() {
         return "board/writeForm";

@@ -16,6 +16,7 @@ let index = {
         let data = {
             title: $("#title").val(),
             content: $("#content").val(),
+            category: $("#category").val(),
         }
         $.ajax({
             type: "POST",
@@ -53,6 +54,7 @@ let index = {
         let data = {
             title: $("#title").val(),
             content: $("#content").val(),
+            category: $("#category").val(),
         }
         console.log(id);
         console.log(data);

@@ -23,6 +23,8 @@ public class Board {
     @Column(nullable = false, length = 100)
     private String title;
 
+    private String category;
+
     @Lob //대용량 데이터
     private String content; //섬머노트 라이브러리 사용 -<html> 태크 섞여 디자인
     //조회수
@@ -47,8 +49,9 @@ public class Board {
             cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
     private List<Reply> replyList;
 
-    public void updateBoard(String title, String content) {
+    public void updateBoard(String title, String content,String category) {
         this.title = title;
         this.content = content;
+        this.category = category;
     }
 }

@@ -25,7 +25,6 @@
                 <h4 class="card-title" th:text="${board.getTitle()}">제목</h4>
                 <a th:href="@{/board/{id}(id=${board.getId()})}" class="btn btn-primary">상세보기</a>
                 <h6 align="right" style="margin-bottom:-10px" th:text="'조회수 : ' + ${board.getViews()}">조회수</h6>
-                <h6 align="left" style="margin-bottom:-10px" th:text="'카테고리 : ' + ${board.getCategory()}">카테고리</h6>
             </div>
         </div>
     </div>
