@@ -10,14 +10,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 @Configuration //빈으로 등록
 @EnableWebSecurity // 시큐리티 필터 추가 = Spring security 활성화. 설정을 해당 파일에서 한다
 @EnableGlobalMethodSecurity(prePostEnabled = true)//스프링 시큐리티 활성화 / 해당 메서드 실행 전 체크!
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final AuthenticationFailureHandler customFailureHandler;
     private final UserOAuth2Service userOAuth2Service;
 
     @Bean

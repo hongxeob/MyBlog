@@ -7,7 +7,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 // 인증이 필요없는 경로 auth/** 허용
 // 그리고 그냥 주소가 / 이면 index.html 허용
@@ -25,11 +24,7 @@ public class UserController {
     }
 
     @GetMapping("/auth/loginForm")
-    public String loginForm(@RequestParam(value = "error",required = false) String error,
-                            @RequestParam(value = "exception",required = false) String exception,
-                            Model model) {
-        model.addAttribute("error", error);
-        model.addAttribute("exception", exception);
+    public String loginForm() {
         return "user/loginForm";
     }
 
