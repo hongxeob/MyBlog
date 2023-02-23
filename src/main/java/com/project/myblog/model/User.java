@@ -4,16 +4,14 @@ import com.project.myblog.dto.response.UserResponseDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 //@Data
 @Getter
 @NoArgsConstructor
 @Entity // User 클래스가 MySQL에 자동으로 테이블 생성
-public class User {
+public class User extends BaseTimeEntity {
 
     @Id //PK
     @GeneratedValue(strategy = GenerationType.IDENTITY) //IDENTITY 전략은 기본 키 생성을 프로젝트에 연결된 데이터베이스에 위임하는 전략
@@ -27,9 +25,6 @@ public class User {
 
     @Column(nullable = false, length = 50)
     private String email;
-
-    @CreationTimestamp
-    private LocalDateTime createDateTime;
 
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
@@ -46,6 +41,10 @@ public class User {
         this.password = password;
     }
 
+    public void updateRole(RoleType role) {
+        this.role = role;
+    }
+
     public UserResponseDto toDto() {
         return UserResponseDto.builder()
                 .id(id)
@@ -55,14 +54,12 @@ public class User {
                 .build();
     }
 
-//    }
     @Builder
-    public User(long id, String username, String password, String email, LocalDateTime createDateTime, RoleType role,  String provider, String providerId) {
+    public User(long id, String username, String password, String email, RoleType role, String provider, String providerId) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
-        this.createDateTime = createDateTime;
         this.role = role;
         this.provider = provider;
         this.providerId = providerId;

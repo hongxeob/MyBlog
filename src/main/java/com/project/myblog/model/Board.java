@@ -1,11 +1,8 @@
 package com.project.myblog.model;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 //@Data
@@ -14,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity // User 클래스가 MySQL에 자동으로 테이블 생성
-public class Board {
+public class Board extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,13 +27,6 @@ public class Board {
     //조회수
     private int views;
 
-    @CreationTimestamp
-    private LocalDateTime localDateTime;
-
-//    @PrePersist
-//    public void createdAt() {
-//        this.localDateTime = LocalDateTime.now();
-//    }
 
     //글쓴이
     //DB는 오브젝트 저장X-> FK사용, 자바는 오브젝트 저장 가능
@@ -49,7 +39,7 @@ public class Board {
             cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
     private List<Reply> replyList;
 
-    public void updateBoard(String title, String content,String category) {
+    public void updateBoard(String title, String content, String category) {
         this.title = title;
         this.content = content;
         this.category = category;
