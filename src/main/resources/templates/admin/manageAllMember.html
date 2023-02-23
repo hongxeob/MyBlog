@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+
+<div class="container">
+    <h1>전체 회원</h1>
+    <hr/>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">등급</th>
+            <th scope="col">소셜 로그인</th>
+            <th scope="col">아이디</th>
+            <th scope="col">이메일</th>
+            <th scope="col">가입일자</th>
+            <th scope="col">수정 및 게시글 확인</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user,i : ${allUsers}">
+            <th scope="row" th:text="${i.count}">1</th>
+            <td th:text="${user.getRole()}">등급</td>
+            <td th:text="${user.getProvider()}">소셜 로그인</td>
+            <td th:text="${user.username}">아이디</td>
+            <td th:text="${user.email}">이메일</td>
+            <td th:text="${user.createdDate}">가입일자</td>
+            <td><a th:href="@{/admin/manage/member/{id}(id=${user.id})}">링크</a></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+</body>
+</html>

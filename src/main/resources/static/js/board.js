@@ -18,6 +18,18 @@ let index = {
             content: $("#content").val(),
             category: $("#category").val(),
         }
+        var title = $("#title").val();
+        var content = $("#content").val();
+        if (title.length == 0) {
+            alert("제목은 필수입니다");
+            $("#title").focus();
+            return false;
+        }
+        if (content.length == 0) {
+            alert("제목은 필수입니다");
+            $("#content").focus();
+            return false;
+        }
         $.ajax({
             type: "POST",
             url: "/api/board",

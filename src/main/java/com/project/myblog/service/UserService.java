@@ -1,6 +1,7 @@
 package com.project.myblog.service;
 
 import com.project.myblog.dto.request.UserSaveRequestDto;
+import com.project.myblog.model.RoleType;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,9 @@ public class UserService {
 
     @Transactional
     public void join(UserSaveRequestDto userSaveRequestDto) {
+        if (userSaveRequestDto.getUsername().equals("admin")) {
+            userSaveRequestDto.setRole(RoleType.ADMIN);
+        }
         String originPassword = userSaveRequestDto.getPassword();
         String encodePassword = encoder.encode(originPassword);
         userSaveRequestDto.setPassword(encodePassword);
