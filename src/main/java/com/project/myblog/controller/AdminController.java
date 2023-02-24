@@ -57,4 +57,20 @@ public class AdminController {
             return "redirect:/";
         }
     }
+
+    @GetMapping("/admin/manage/visit")
+    public String manageVisit(@AuthenticationPrincipal PrincipalDetails principalDetails,
+                              Model model) {
+        User user = principalDetails.getUser();
+        if (user.getRole() == RoleType.ADMIN) {
+            int totalViewCount = adminService.getTotalViewCount();
+            int totalUserCount = adminService.getTotalUserCount();
+            model.addAttribute("totalViewCount", totalViewCount);
+            model.addAttribute("totalUserCount", totalUserCount);
+            return "/admin/manageVisit";
+        } else {
+            return "redirect:/";
+        }
+    }
+
 }

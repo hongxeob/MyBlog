@@ -24,12 +24,10 @@
                     <input type="radio" th:value="ADMIN" class="radio-value form-check-input" name="optradio">ADMIN
                 </label>
             </div>
-
         </form>
         <button id="btn-update" class="btn btn-primary">등급 수정 완료</button>
     </div>
     <hr/>
-
 
     <h1 th:text="|${user.getUsername()} 님 게시물 확인하기|">xxx님의 작성글</h1>
     <br>
@@ -38,8 +36,10 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">제목</th>
+            <th scope="col">카테고리</th>
             <th scope="col">조회수</th>
             <th scope="col">작성일자</th>
+            <th scope="col">수정일자</th>
             <th scope="col">상세보기</th>
         </tr>
         </thead>
@@ -48,17 +48,15 @@
         <tr th:each="board, i : ${boards}">
             <th scope="row" th:text="${i.count}">1</th>
             <td th:text="${board.getTitle()}">제목입니다.</td>
+            <td th:text="${board.getCategory()}">카테고리</td>
             <td th:text="${board.getViews()}">30명</td>
             <td th:text="${board.getCreatedDate()}">2022-01-03</td>
             <td th:text="${board.getModifiedDate()}">2022-01-03</td>
             <td><a th:href="@{/board/{id}(id=${board.getId()})}">링크</a></td>
         </tr>
-
         </tbody>
     </table>
-
 </div>
-
 
 <footer th:replace="/layout/footer.html :: fragment-footer"></footer>
 
