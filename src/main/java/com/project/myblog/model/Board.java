@@ -1,5 +1,7 @@
 package com.project.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -30,14 +32,17 @@ public class Board extends BaseTimeEntity {
 
     //글쓴이
     //DB는 오브젝트 저장X-> FK사용, 자바는 오브젝트 저장 가능
-    @ManyToOne(fetch = FetchType.EAGER) //EAGER=호출시 바로 로드
+    @ManyToOne(fetch = FetchType.LAZY) //EAGER=호출시 바로 로드
     @JoinColumn(name = "userId") //DB상 필드값은 userId로 설정
     private User user;
 
     @OneToMany(mappedBy = "board",
             fetch = FetchType.EAGER, //설계한 프로젝트 UI 구조상 '댓글 펼치기' 같은 지연 로딩이 아닌, 게시판에 바로 댓글이 보이는 것이기에 EAGER 전략
             cascade = CascadeType.REMOVE) //Board(게시판)삭제시 댓글도 함께 삭제
+    @JsonIgnoreProperties({"board"})
+    @OrderBy("id desc")
     private List<Reply> replyList;
+
 
     public void updateBoard(String title, String content, String category) {
         this.title = title;

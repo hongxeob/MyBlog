@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor //모든 필드 값을 파라미터로 받는 생성자를 만듦
 @Builder
 @Entity
-public class Reply {
+public class Reply extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -26,12 +26,8 @@ public class Reply {
     @JoinColumn(name = "boardId")
     private Board board;
 
-    @ManyToOne // 연관관계 형
+    @ManyToOne(fetch = FetchType.LAZY) // 연관관계 형
     @JoinColumn(name = "userId")
     private User user;
-
-    @DateTimeFormat(pattern = "yyyy-mm-dd HH:mm")
-    private LocalDateTime localDateTime;
-
 
 }
