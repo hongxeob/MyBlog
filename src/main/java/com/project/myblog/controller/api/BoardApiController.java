@@ -2,6 +2,7 @@ package com.project.myblog.controller.api;
 
 import com.project.myblog.config.auth.PrincipalDetails;
 import com.project.myblog.dto.BoardDto;
+import com.project.myblog.dto.ReplyDto;
 import com.project.myblog.dto.ResponseDto;
 import com.project.myblog.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,12 @@ public class BoardApiController {
     @PutMapping("/api/board/{id}")
     public ResponseDto<Integer> update(@PathVariable Long id, @RequestBody BoardDto requestBoardDto) {
         boardService.update(id, requestBoardDto);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> writeReply(@PathVariable("boardId") Long boardId, @RequestBody ReplyDto replyDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+        boardService.writeReply(principalDetails.getUser(), boardId, replyDto);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
 }

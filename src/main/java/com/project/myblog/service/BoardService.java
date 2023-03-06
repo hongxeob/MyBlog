@@ -1,9 +1,12 @@
 package com.project.myblog.service;
 
 import com.project.myblog.dto.BoardDto;
+import com.project.myblog.dto.ReplyDto;
 import com.project.myblog.model.Board;
+import com.project.myblog.model.Reply;
 import com.project.myblog.model.User;
 import com.project.myblog.repository.BoardRepository;
+import com.project.myblog.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -16,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class BoardService {
     private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
     @Transactional
     public void write(BoardDto boardDto, User user) {
@@ -59,5 +63,13 @@ public class BoardService {
         board.updateBoard(requestBoardDto.getTitle(), requestBoardDto.getContent(),requestBoardDto.getCategory());
         // 바로 값만 새로 세팅해주면 된다
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
+    }
+
+    @Transactional
+    public void writeReply(User user, Long boardId, ReplyDto replyDto) {
+        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException());
+        replyDto.setBoard(board);
+        replyDto.setUser(user);
+        replyRepository.save(replyDto.toEntity());
     }
 }
