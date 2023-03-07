@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Reply extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, length = 400)
     private String content;

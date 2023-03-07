@@ -72,4 +72,8 @@ public class BoardService {
         replyDto.setUser(user);
         replyRepository.save(replyDto.toEntity());
     }
+
+    public void deleteReply(Long replyId) {
+        replyRepository.deleteById(replyId);
+    }
 }

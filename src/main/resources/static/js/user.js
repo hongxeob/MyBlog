@@ -59,8 +59,12 @@ let index = {
             //MIME 유형을 기반으로 유추한다(default =Intelligent Guess (xml, json, script, or html)
             dataType: "json"//서버에서 어떤 타입을 받을 것인지를 의미 (요청이 서버로 응답이 왔을 때,javascript 오브젝트로 변경)
         }).done(function (res) {
-            alert("회원가입 완료!🎉")
-            location.href = "/";
+            if (res.status === 500) {
+                alert("회원가입에 실패하였습니다!");
+            } else {
+                alert("회원가입 완료!🎉");
+                location.href = "/";
+            }
         }).fail(function (error) {
             alert("양식에 맞게 정보를 기입해 주세요!!");
         });
