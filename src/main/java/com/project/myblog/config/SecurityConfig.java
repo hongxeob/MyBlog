@@ -28,7 +28,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable() // CSRF 보안에 대한 설정. 아무 설정도 하지 않으면 CSRF 보안을 하도록 설정
+        http.csrf().disable().httpBasic().and() // CSRF 보안에 대한 설정. 아무 설정도 하지 않으면 CSRF 보안을 하도록 설정
                 .authorizeHttpRequests() //요청에 대한 권한 지정. Security 처리에 HttpServletRequest를 이용한다는 것을 의미한다.
                 .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/image/**").permitAll()//특정 경로를 지정->어떤 사용자든 접근 가능
                 .anyRequest() //설정한 경로 외에 모든 경로를 말함

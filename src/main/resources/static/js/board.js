@@ -28,7 +28,7 @@ let index = {
             return false;
         }
         if (content.length == 0) {
-            alert("제목은 필수입니다");
+            alert("내용은 필수입니다");
             $("#content").focus();
             return false;
         }
