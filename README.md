@@ -173,7 +173,7 @@
 <img width="1167" alt="image" src="https://user-images.githubusercontent.com/97447334/224938405-5ce66148-7307-4905-9925-c6afc3f97bf1.png">
 
 - `전체 회원`을 확인 할 수 있다.
-- `방문 통계`를 통해 `전체 회원수`, `전체 조회수`를 확인할 수 있다
+- `방문 통계`를 통해 `전체 회원수`, `전체 조회수`를 확인할 수 있다.
 
 #### 3. 전체 회원
 <img width="1160" alt="image" src="https://user-images.githubusercontent.com/97447334/224938867-4e76a14f-bca3-4c13-bd5a-3efa68c45265.png">
