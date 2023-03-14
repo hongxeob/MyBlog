@@ -81,12 +81,11 @@
     <summary>메인 화면</summary>
 
 #### 1. 비 로그인시
-<img width="1911" alt="image" src="https://user-images.githubusercontent.com/97447334/224924987-59df8bf1-a004-42b0-89a0-d233b5e59fc2.png">
-
+<img width="1912" alt="스크린샷 2023-03-14 오후 5 40 36" src="https://user-images.githubusercontent.com/97447334/224944473-bc0dbfba-88a6-43f4-ae13-3d120355e288.png">
 - 비로그인시 회원가입 / 로그인 기능만 활성화
 
 #### 2. 로그인했을 시
-<img width="1900" alt="image" src="https://user-images.githubusercontent.com/97447334/224924719-32092d9b-c1d3-4b40-9b55-4691f277f63a.png">
+<img width="1914" alt="스크린샷 2023-03-14 오후 5 40 45" src="https://user-images.githubusercontent.com/97447334/224944462-de617855-f02f-4fc6-844d-2ece66490d0c.png">
 
 - 로그인시 글쓰기 및 카테고리별 글 확인 가능 활성화
 - 회원정보 수정, 로그아웃 기능 활성화
@@ -137,8 +136,8 @@
 - 썸머노트를 이용한 작성 폼
 - 카테고리 설정 가능
 
-<img width="1257" alt="image" src="https://user-images.githubusercontent.com/97447334/224936137-c01293d6-a525-411c-b290-f63f46575458.png">
-<img width="1165" alt="image" src="https://user-images.githubusercontent.com/97447334/224935874-353e8f50-7bea-4ab8-ad15-701d1abeffa5.png">
+<img width="1188" alt="스크린샷 2023-03-14 오후 5 43 15" src="https://user-images.githubusercontent.com/97447334/224945216-1f7033e9-591c-4051-8114-4bcf60b8681a.png">
+<img width="1183" alt="스크린샷 2023-03-14 오후 5 43 27" src="https://user-images.githubusercontent.com/97447334/224945200-eb1f8128-e92c-47af-9b71-4b80dad27a95.png">
 
 - 게시물의 제목,내용을 적지 않을 시 등록 불가.
 
@@ -146,10 +145,10 @@
 
 - 글 작성이 되었다는 알림과 함께 글 작성이 완료된다. 
 #### 3.1 게시물 상세 (글쓴이)
-<img width="1275" alt="image" src="https://user-images.githubusercontent.com/97447334/224932576-698cd0ad-69e0-4bd9-8c57-cdb43ea3f094.png">
+<img width="1165" alt="스크린샷 2023-03-14 오후 5 45 52" src="https://user-images.githubusercontent.com/97447334/224945734-3ec4099f-a674-4219-9e70-39323e03b32a.png">
 
 #### 3.2 게시물 상세 (글쓴이 외)
-<img width="1210" alt="image" src="https://user-images.githubusercontent.com/97447334/224933689-ece42dc8-f8ce-4d6a-991d-a9230b324f80.png">
+<img width="1213" alt="스크린샷 2023-03-14 오후 5 46 09" src="https://user-images.githubusercontent.com/97447334/224945724-3b9f0e71-57ab-44b7-809a-788995ae5687.png">
 
 - 글 번호, 작성자, 카테고리, 조회수등 글에 대한 정보 노출
 - 돌아가기, 수정, 삭제 기능 활성화
@@ -179,12 +178,13 @@
 <img width="1160" alt="image" src="https://user-images.githubusercontent.com/97447334/224938867-4e76a14f-bca3-4c13-bd5a-3efa68c45265.png">
 
 - 전체 회원을 최신 가입자 순으로 확인할 수 있다.
-- 회원의 정보 (등급,소셜 로그인 유무, 아이디, 이메일, 가입일자)를 확인할 수 있다.
+- 회원의 정보 (등급, 소셜 로그인 유무, 아이디, 이메일, 가입일자)를 확인할 수 있다.
 - `링크` 버튼을 통해 회원별 게시글 내역을 확인할 수 있다.
 
 #### 4. 회원별 게시글 확인 및 등급 수정
-<img width="1148" alt="image" src="https://user-images.githubusercontent.com/97447334/224939657-09d1c26c-cb60-4a14-9302-abeef15a9f01.png">
-<img width="1342" alt="image" src="https://user-images.githubusercontent.com/97447334/224939700-99e2d2ca-f0f3-4479-b52b-615945d755c8.png">
+<img width="1157" alt="스크린샷 2023-03-14 오후 5 37 31" src="https://user-images.githubusercontent.com/97447334/224943670-5bf32ea3-7851-412f-98c3-019b49aab6b5.png">
+<img width="1277" alt="스크린샷 2023-03-14 오후 5 37 48" src="https://user-images.githubusercontent.com/97447334/224943700-72ff30a5-8e1b-4290-81ee-39a85b5d0c25.png">
+
 <img width="1038" alt="image" src="https://user-images.githubusercontent.com/97447334/224939601-955f60a4-b3e5-4834-825a-e1bf818d13d8.png">
 
 - 회원별 작성 게시물 및 해당 게시물의 정보(카테고리, 작성일자, 수정일자, 조회수)등을 확인할 수 있다.
