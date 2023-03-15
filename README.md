@@ -108,6 +108,8 @@
 
 </details>
 
+<br>
+
 <details>
     <summary>회원 관련</summary>
 
@@ -149,6 +151,8 @@
 - 회원 정보 수정이 불가하게 막아두었다.
 
 </details>
+
+<br>
 
   <details>
     <summary>게시글 관련</summary>
@@ -194,7 +198,15 @@
 
 - 제목,내용,카테고리 모두 수정이 가능하다.
 
+#### 5. 댓글 작성 및 삭제
+<img width="1295" alt="스크린샷 2023-03-15 오후 4 51 18" src="https://user-images.githubusercontent.com/97447334/225242989-c92165c8-7ca9-4ce1-bbff-a4215f8cf713.png">
+<img width="1311" alt="스크린샷 2023-03-15 오후 4 51 34" src="https://user-images.githubusercontent.com/97447334/225243299-6de7f315-c77b-43c5-b09c-b58f85bc8f13.png">
+<img width="1276" alt="스크린샷 2023-03-15 오후 4 51 43" src="https://user-images.githubusercontent.com/97447334/225243004-79edf914-0365-4f64-ba1e-e628a67e55e0.png">
+<img width="1172" alt="스크린샷 2023-03-15 오후 4 51 55" src="https://user-images.githubusercontent.com/97447334/225243014-32eec6e1-629d-43c6-a004-de3052f2519b.png">
+
 </details>
+
+<br>
 
 <details>
     <summary>관리자 관련</summary>
@@ -243,4 +255,12 @@
 - 전체 게시물의 총 조회수를 알 수 있다.
 
 </details>
+<br>
 
+# 구조 및 설계
+## 1. DB 설계
+<img width="1057" alt="image" src="https://user-images.githubusercontent.com/97447334/225246025-47b8bae1-4e73-448d-bd74-9ba3f52d4087.png">
+<img width="790" alt="image" src="https://user-images.githubusercontent.com/97447334/225251339-1d55ff3c-2ebd-4b58-99f8-f642312c17d0.png">
+<img width="796" alt="image" src="https://user-images.githubusercontent.com/97447334/225251383-b0910c74-d928-4b59-beff-c1a177a04c3c.png">
+
+<img width="802" alt="image" src="https://user-images.githubusercontent.com/97447334/225251438-7104a47a-e83f-41f2-a465-11a6a3e47970.png">
