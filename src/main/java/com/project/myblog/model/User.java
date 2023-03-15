@@ -26,6 +26,7 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false, length = 50)
     private String email;
 
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING) //DB는 RoleType에 대한 정보를 모르기에 각 Enum 이름(String)을 컬럼에 저장
     private RoleType role;
 

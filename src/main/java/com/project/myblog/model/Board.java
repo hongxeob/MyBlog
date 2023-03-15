@@ -22,13 +22,14 @@ public class Board extends BaseTimeEntity {
     @Column(nullable = false, length = 100)
     private String title;
 
+    @Column(nullable = false)
     private String category;
 
     @Lob //대용량 데이터
     private String content; //섬머노트 라이브러리 사용 -<html> 태크 섞여 디자인
     //조회수
+    @Column(nullable = false)
     private int views;
-
 
     //글쓴이
     //DB는 오브젝트 저장X-> FK사용, 자바는 오브젝트 저장 가능
