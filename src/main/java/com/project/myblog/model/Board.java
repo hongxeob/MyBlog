@@ -2,6 +2,7 @@ package com.project.myblog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.project.myblog.dto.BoardDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -49,5 +50,17 @@ public class Board extends BaseTimeEntity {
         this.title = title;
         this.content = content;
         this.category = category;
+    }
+
+    public BoardDto toDto() {
+        return BoardDto.builder()
+                .id(id)
+                .title(title)
+                .content(content)
+                .category(category)
+                .views(views)
+                .user(user)
+                .replyList(replyList)
+                .build();
     }
 }

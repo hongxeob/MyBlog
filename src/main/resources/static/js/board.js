@@ -78,7 +78,7 @@ let index = {
             dataType: "json"
         }).done(function (res) {
             alert("글이 수정 되었습니다!!🎉")
-            location.href = "/";
+            location.href = "/board/" + id;
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

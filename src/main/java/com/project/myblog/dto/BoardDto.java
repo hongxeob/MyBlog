@@ -1,8 +1,12 @@
 package com.project.myblog.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.myblog.model.Board;
+import com.project.myblog.model.Reply;
 import com.project.myblog.model.User;
 import lombok.*;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -16,6 +20,7 @@ public class BoardDto {
     private String category;
     private int views;
     private User user;
+    private List<Reply> replyList;
 
     public Board toEntity() {
         return Board.builder()
@@ -25,6 +30,7 @@ public class BoardDto {
                 .category(category)
                 .views(views)
                 .user(user)
+                .replyList(replyList)
                 .build();
     }
 }

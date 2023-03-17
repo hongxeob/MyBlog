@@ -1,5 +1,6 @@
 package com.project.myblog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class Reply extends BaseTimeEntity {
 
     @ManyToOne // 연관관계 형성
     @JoinColumn(name = "boardId")
+    @JsonIgnore
     private Board board;
 
     @ManyToOne(fetch = FetchType.LAZY) // 연관관계 형
