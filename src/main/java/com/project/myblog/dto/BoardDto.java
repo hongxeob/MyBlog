@@ -9,7 +9,7 @@ import lombok.*;
 import java.util.List;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class BoardDto {

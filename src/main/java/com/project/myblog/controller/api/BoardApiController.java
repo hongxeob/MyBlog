@@ -31,6 +31,10 @@ public class BoardApiController {
     public ResponseEntity findById(@PathVariable Long id) {
         return ResponseEntity.ok(boardService.findById(id));
     }
+    @GetMapping("/api/boards")
+    public ResponseEntity findAll() {
+        return ResponseEntity.ok(boardService.findAll());
+    }
     @DeleteMapping("/api/board/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
         boardService.delete(id);
