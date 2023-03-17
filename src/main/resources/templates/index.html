@@ -33,7 +33,6 @@
 
     <!-- 게시물이 하나라도 있을 때-->
     <div th:if="!${boards.isEmpty()}">
-
         <!--처음,끝이 아닐 때-->
         <div th:if="!${boards.last} and !${boards.first}">
             <ul class="pagination justify-content-center">
@@ -72,11 +71,50 @@
             </div>
         </div>
     </div>
+
     <div th:unless="!${boards.isEmpty()}">
         <h2>게시물을 작성해 보세요!</h2>
     </div>
 </div>
 
+<div sec:authorize="isAnonymous()">
+    <div class="container">
+        <h2>회원가입 후 이용하세요!</h2>
+    </div>
+</div>
+
+<!--처음,끝이 아닐 때-->
+<!--    <div th:if="!${boards.last} and !${boards.first}">-->
+<!--        <ul class="pagination justify-content-center">-->
+<!--            <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>-->
+<!--            <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;처음,끝일 때&ndash;&gt;-->
+<!--    <div th:unless="!${boards.last} and !${boards.first}">-->
+<!--        &lt;!&ndash;첫 페이지 일때&ndash;&gt;-->
+<!--        <div th:if="${boards.first}">-->
+<!--            <ul class="pagination justify-content-center">-->
+<!--                <li class="page-item disabled"><a class="page-link"-->
+<!--                                                  th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a></li>-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        &lt;!&ndash;끝 페이지 일 때&ndash;&gt;-->
+<!--        <div th:unless="${boards.first}">-->
+<!--            <ul class="pagination justify-content-center">-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{?page={num}(num=${boards.getNumber()-1})}">이전</a>-->
+<!--                </li>-->
+<!--                <li class="page-item disabled"><a class="page-link"-->
+<!--                                                  th:href="@{?page={num}(num=${boards.getNumber()+1})}">다음</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
 
 <footer th:replace="/layout/footer.html :: fragment-footer"></footer>
 </body>
