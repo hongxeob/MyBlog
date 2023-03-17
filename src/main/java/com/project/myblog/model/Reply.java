@@ -1,6 +1,7 @@
 package com.project.myblog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.project.myblog.dto.ReplyDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,4 +30,13 @@ public class Reply extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY) // 연관관계 형
     @JoinColumn(name = "userId")
     private User user;
+
+    public ReplyDto toDto() {
+        return ReplyDto.builder()
+                .id(id)
+                .content(content)
+                .board(board)
+                .user(user)
+                .build();
+    }
 }

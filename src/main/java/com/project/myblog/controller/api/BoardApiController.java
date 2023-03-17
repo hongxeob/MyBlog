@@ -47,15 +47,15 @@ public class BoardApiController {
         return ResponseEntity.ok(id);
     }
 
-    @PostMapping("/api/board/{boardId}/reply")
-    public ResponseDto<Integer> writeReply(@PathVariable("boardId") Long boardId, @RequestBody ReplyDto replyDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-        boardService.writeReply(principalDetails.getUser(), boardId, replyDto);
-        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-    }
+//    @PostMapping("/api/board/{boardId}/reply")
+//    public ResponseDto<Integer> writeReply(@PathVariable("boardId") Long boardId, @RequestBody ReplyDto replyDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+//        reply.writeReply(principalDetails.getUser(), boardId, replyDto);
+//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+//    }
 
-    @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
-    public ResponseDto<Integer> deleteReply(@PathVariable("replyId") Long replyId) {
-        boardService.deleteReply(replyId);
-        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-    }
+//    @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
+//    public ResponseDto<Integer> deleteReply(@PathVariable("replyId") Long replyId) {
+//        boardService.deleteReply(replyId);
+//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+//    }
 }

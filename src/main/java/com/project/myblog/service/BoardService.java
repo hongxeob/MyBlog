@@ -54,7 +54,6 @@ public class BoardService {
         return board.toDto();
     }
 
-
     @Transactional
     public int updateViews(Long id) {
         return boardRepository.updateViews(id);
@@ -75,19 +74,7 @@ public class BoardService {
         // 해당 함수 종료시 트랜잭션 종료되고 더티체킹 후 플러시(자동 업데이트)
     }
 
-    @Transactional
-    public void writeReply(User user, Long boardId, ReplyDto replyDto) {
-        Board board = boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException());
-        replyDto.setBoard(board);
-        replyDto.setUser(user);
-        replyRepository.save(replyDto.toEntity());
-    }
-
-    public void deleteReply(Long replyId) {
-        replyRepository.deleteById(replyId);
-    }
-
-    public List<Board> findAll() {
-        return boardRepository.findAll();
+    public List<BoardDto> findAll() {
+        return boardRepository.findAll().stream().map(new BoardDto()::toDto).collect(Collectors.toList());
     }
 }

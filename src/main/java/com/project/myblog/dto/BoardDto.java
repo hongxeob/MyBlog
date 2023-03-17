@@ -33,6 +33,17 @@ public class BoardDto {
                 .replyList(replyList)
                 .build();
     }
+
+    public BoardDto toDto(Board board) {
+        this.id = board.getId();
+        this.title = board.getTitle();
+        this.content = board.getContent();
+        this.category = board.getCategory();
+        this.views = board.getViews();
+        this.user = board.getUser();
+        this.replyList = board.getReplyList();
+        return this;
+    }
 }
 
 
