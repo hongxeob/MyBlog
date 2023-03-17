@@ -19,7 +19,7 @@ let index = {
             dataType: "json"
         }).done(function (res) {
             alert("회원 수정 완료!🎉")
-            location.href = "/";
+            location.href = "/admin/manage/member";
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });

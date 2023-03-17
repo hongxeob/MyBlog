@@ -16,14 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class BoardApiController {
     private final BoardService boardService;
 
-    //    @PostMapping("/api/board")
-//    public ResponseDto<Integer> write(@RequestBody BoardDto boardDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-//        boardService.write(boardDto, principalDetails.getUser());
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//    }
+
     @PostMapping("/api/board")
     public ResponseEntity write(@RequestBody BoardDto boardDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
         return ResponseEntity.ok(boardService.write(boardDto, principalDetails.getUser()));
     }
 
@@ -47,15 +42,4 @@ public class BoardApiController {
         return ResponseEntity.ok(id);
     }
 
-//    @PostMapping("/api/board/{boardId}/reply")
-//    public ResponseDto<Integer> writeReply(@PathVariable("boardId") Long boardId, @RequestBody ReplyDto replyDto, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-//        reply.writeReply(principalDetails.getUser(), boardId, replyDto);
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//    }
-
-//    @DeleteMapping("/api/board/{boardId}/reply/{replyId}")
-//    public ResponseDto<Integer> deleteReply(@PathVariable("replyId") Long replyId) {
-//        boardService.deleteReply(replyId);
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//    }
 }
