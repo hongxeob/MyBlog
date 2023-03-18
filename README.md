@@ -258,7 +258,7 @@
 
 # 구조 및 설계
 ## 1. DB 설계
-<img width="1057" alt="image" src="https://user-images.githubusercontent.com/97447334/225246025-47b8bae1-4e73-448d-bd74-9ba3f52d4087.png">
+<img width="1003" alt="image" src="https://user-images.githubusercontent.com/97447334/226087698-10fe1d18-acd9-46c6-9924-bd9007be3e12.png">
 <img width="790" alt="image" src="https://user-images.githubusercontent.com/97447334/225251339-1d55ff3c-2ebd-4b58-99f8-f642312c17d0.png">
 <img width="796" alt="image" src="https://user-images.githubusercontent.com/97447334/225251383-b0910c74-d928-4b59-beff-c1a177a04c3c.png">
 
